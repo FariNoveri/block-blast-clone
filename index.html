@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blast Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1 class="game-title">Block Blast</h1>
+            <div class="score-container">
+                <div class="score-item">
+                    <div class="score-label">Score</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Best</div>
+                    <div class="score-value" id="bestScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-label">Lines</div>
+                    <div class="score-value" id="lines">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        
+        <div class="next-blocks">
+            <canvas class="block-preview" id="preview1" width="80" height="80"></canvas>
+            <canvas class="block-preview" id="preview2" width="80" height="80"></canvas>
+            <canvas class="block-preview" id="preview3" width="80" height="80"></canvas>
+            <button class="rotate-btn" id="rotateBtn" title="Rotate Block (Right Click)">⟲</button>
+        </div>
+    </div>
+    
+    <div class="game-over" id="gameOver">
+        <div class="game-over-content">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

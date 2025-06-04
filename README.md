@@ -17,9 +17,6 @@ A modern web-based recreation of the popular Block Blast puzzle game built with 
 - **Local High Scores** - Your best scores are saved
 - **Modern UI** - Glass morphism design with smooth animations
 
-## 🚀 Play Now
-[Live Demo](your-github-pages-url)
-
 ## 🛠️ Technologies Used
 - HTML5 Canvas
 - Vanilla JavaScript

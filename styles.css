@@ -12,14 +12,29 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     font-family: 'Arial', sans-serif;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
     min-height: 100vh;
     color: white;
     overflow-x: hidden; /* Hindari scroll horizontal */
 }
 
-/* Container utama */
+.block-preview, .rotate-btn, .score-value {
+    user-select: none;
+}
+
+/* Container utama untuk game + leaderboard */
+.container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Game container */
 .game-container {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -27,8 +42,7 @@ body {
     padding: 20px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 100%;
-    max-width: 440px;
+    width: 440px;
     text-align: center;
 }
 
@@ -137,7 +151,6 @@ canvas#gameCanvas {
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    flex-shrink: 0;
 }
 
 .rotate-btn:hover {
@@ -160,7 +173,7 @@ canvas#gameCanvas {
 }
 
 .grid-cell-highlight {
-    position: fixed; /* Ubah dari 'absolute' */
+    position: fixed; /* Pastikan elemen tetap di posisi yang benar */
     border: 3px solid #ffd700;
     border-radius: 5px;
     pointer-events: none;
@@ -173,6 +186,55 @@ canvas#gameCanvas {
     border-color: #e74c3c;
     background: rgba(231, 76, 60, 0.2);
 }
+
+/* Leaderboard Section */
+.leaderboard {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 250px;
+    min-height: 400px;
+    color: white;
+}
+
+.leaderboard h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#leaderboardList {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: rank;
+}
+
+#leaderboardList li {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+}
+
+#leaderboardList li::before {
+    content: counter(rank);
+    counter-increment: rank;
+    background: #ffd700;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
 /* Modal game over */
 .game-over {
     position: fixed;
@@ -184,7 +246,7 @@ canvas#gameCanvas {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 1100;
+    z-index: 1000;
 }
 
 .game-over-content {
@@ -212,24 +274,26 @@ canvas#gameCanvas {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Media query untuk tampilan mobile */
+/* Mobile Responsive */
 @media (max-width: 768px) {
     body {
         padding: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .game-title {
-        font-size: 2em;
+    .container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    canvas#gameCanvas {
+    .game-container {
         width: 100%;
-        height: auto;
+        max-width: 440px;
     }
 
     .next-blocks {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
         gap: 15px;
     }
 
@@ -242,5 +306,11 @@ canvas#gameCanvas {
         width: 50px;
         height: 50px;
         font-size: 1.2em;
+    }
+
+    .leaderboard {
+        width: 100%;
+        max-width: 440px;
+        margin-top: 20px;
     }
 }

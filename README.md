@@ -24,7 +24,10 @@ A modern web-based recreation of the popular Block Blast puzzle game built with 
 - Local Storage API
 
 ## 📱 Screenshots
-[Add your game screenshots here]
+![image](https://github.com/user-attachments/assets/5765d0bd-2c0f-45db-9dbb-788e90e7590c)
+![image](https://github.com/user-attachments/assets/adb7b9c8-933e-4da4-9ee3-d705e0fcccca)
+
+
 
 ## 🔧 Installation
 1. Clone this repository
